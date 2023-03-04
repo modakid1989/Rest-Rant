@@ -1,0 +1,87 @@
+h1 {
+    text-align: center;
+    color: cornflowerblue;
+    padding: 20px;
+    
+  }
+
+body {
+  text-align: center;
+}
+
+img {
+  border: 1px solid black;
+  border-radius: 8px;
+  max-width: 50%;
+  max-height: 50%;
+  
+}
+
+main {
+  margin-right: 20px;
+  margin-left: 20px;
+  background-color: white;
+}
+/* Set the wrapper element to be a flex container */
+#wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* Set the main content area to grow to fill the remaining vertical space */
+.main-content {
+  flex-grow: 1;
+}
+
+/* Set the footer to have a fixed position at the bottom of the page */
+.footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  height: 60px; 
+  background-color: #F4D570;
+}
+
+nav {
+  background-color: cornflowerblue;
+  padding: 20px;
+  font-family: Open Sans;
+}
+
+nav ul {
+  list-style-type: none;
+  margin: 0em;
+}
+
+nav li {
+  display: inline;
+  margin-right: 25px;
+}
+
+.card-body ul {
+  list-style-type: none;
+}
+
+nav a {
+  color: white;
+  font-size: 1.5em;
+}
+
+nav a:hover {
+  color: pink;
+  text-decoration: none;
+}
+
+div.form-group.col-sm-6 {
+  width: 50%;
+  margin: 30px auto;
+} 
+
+form {
+  margin-top: 50px;
+}
+
+input.form-control {
+  border: 1px solid black;
+}
