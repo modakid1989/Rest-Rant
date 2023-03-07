@@ -3,6 +3,23 @@ const Def = require('../default')
 
 
 function show ({place, id}) {
+  let comments = (
+    <h3 className ="inactive">No comments yet!</h3>
+  )
+  if (place.comments.length) {
+    comments = place.comments.map(c => {
+      return (
+        <div className="border">
+          <h2 className="rant">{c.rant ? 'Rant!😡'  : 'Rave😻!'}</h2>
+          <h4>{c.content}</h4>
+          <h3>
+            <stong>- {c.author}</stong>
+          </h3>
+          <h4>Rating: {c.stars}</h4>
+        </div>
+      )
+    })
+  }
   return (
     <Def>
       <main className="container">
@@ -33,7 +50,33 @@ function show ({place, id}) {
             <div className="card comments">
               <div className="card-body">
                 <h1>Comments:</h1>
-                <p>No comments yet!</p>
+                {comments}
+
+<form method ='POST' action={`/places/${place.id}/comment`}>
+
+<div>  
+<label htmlFor="author">Author:</label>
+<input className='form-control' id="author" name="author"/>
+</div> 
+
+<div className='form-group'>
+<label htmlFor="content">Content:</label>
+<input className='form-control' id='content' name='content' type='textarea' />
+</div>
+
+<div className='form-group'>
+<label htmlFor='stars'>Star Rating</label>
+<input className='form-control' id='stars' name='stars' type='range' step='0.5' min='0' max='5' />
+</div>
+
+<div className='form-group'>
+<label htmlFor='rant'>Rant</label>
+<input  id='rant' name='rant' type='checkbox' defaultChecked/>
+</div> 
+
+<button type="submit">Submit</button>
+</form>
+
               </div>
              </div>
              <div className="card">
