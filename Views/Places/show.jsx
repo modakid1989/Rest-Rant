@@ -6,20 +6,31 @@ function show ({place, id}) {
   let comments = (
     <h3 className ="inactive">No comments yet!</h3>
   )
-  if (place.comments.length) {
-    comments = place.comments.map(c => {
-      return (
-        <div className="border">
-          <h2 className="rant">{c.rant ? 'Rant!😡'  : 'Rave😻!'}</h2>
-          <h4>{c.content}</h4>
-          <h3>
-            <stong>- {c.author}</stong>
-          </h3>
-          <h4>Rating: {c.stars}</h4>
-        </div>
-      )
-    })
-  }
+  let averageRating = Math.round(sumRatings / place.comments.length)
+    let stars = ''
+    for (let i = 0; i < averageRating; i++) {
+      stars += '⭐️'
+    }
+    rating = 
+      <h3>
+          {stars} 
+      </h3>
+       comments = place.comments.map(c => {
+        return (
+          <div className="border">
+            <h2 className="rant">{c.rant ? 'Rant!😡'  : 'Rave😻!'}</h2>
+            <h4>{c.content}</h4>
+            <h3>
+              <stong>- {c.author}</stong>
+            </h3>
+            <h4>Rating: {c.stars}</h4>
+            {/* { rating } */}
+          </div>
+        )
+      })
+    
+    return 
+      
   return (
     <Def>
       <main className="container">
@@ -81,10 +92,10 @@ function show ({place, id}) {
              </div>
              <div className="card">
               <div className="card-body">
-              <a href={`/places/${id}/edit`} className="btn btn-warning"><i class="bi bi-pencil"></i> 
+              <a href={`/places/${place.id}/edit`} className="btn btn-warning"><i class="bi bi-pencil"></i>  
                  Edit
               </a>     
-              <form method="POST" action={`/places/${id}?_method=DELETE`}> 
+              <form method="POST" action={`/places/${place.id}?_method=DELETE`}> 
                 <button type="submit" className="btn btn-danger"><i class="bi bi-trash"></i>
                   Delete
                 </button>
